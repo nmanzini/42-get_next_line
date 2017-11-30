@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/16 14:50:15 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/22 17:20:00 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	char *dest;
+	char *out;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (s1 && s2)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		dest = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+		if (dest)
+		{
+			out = dest;
+			while (*s1 != 0)
+				*dest++ = *s1++;
+			while (*s2 != 0)
+				*dest++ = *s2++;
+			return (out);
+		}
+		else
+		{
+			return (NULL);
+		}
 	}
-	return (0)
+	else
+		return (NULL);
 }
-

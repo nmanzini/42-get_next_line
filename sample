@@ -1,0 +1,11 @@
+• You must only submit two files : get_next_line.c and get_next_line.h
+• if you are clever, you will use your libft. If so, submit your folder libft at the root of your repository.
+• There cannot be a main function in your program.
+• Do not push a Makefile
+• Your project must be written in accordance with the Norm.
+• You have to handle errors carefully. In no way can your program, or in this particular case your function, quit in an unexpected manner (Segmentation fault, bus error, double free, etc).
+• All heap allocated memory space must be properly freed when necessary.
+• Your project cannot leaks.
+• You must submit a file called author containing your username followed by a ’\n’ at the root of your repository:
+• If you choose to submit this project using your library libft, it is strictly FORBIDDEN to bypass the limitation of the Norm by adding some specific functions from your get_next_line. That would be considered cheating during your defence. Your get_next_line must hold in 5 functions of 25 lines max. The respect of this instruction will be carefully checked during your defence. There is no need for you ask permission to the staff to add a function to your library. Use your head instead and ask yourself if your function respects this instruction. If you do everything right, you will of course be encouraged to expand your library with generic functions. You’ll discover their usage as you complete this project.
+• The libc functions allowed on this project are read, malloc and free.

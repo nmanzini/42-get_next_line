@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/20 21:28:45 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/20 21:32:50 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-int get_next_line(const int fd, char **line)
+int	ft_tolower(int c)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
-
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
-	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
-	}
-	return (0)
+	if (c > 64 && c < 91)
+		return (c + 32);
+	else
+		return (c);
 }
-

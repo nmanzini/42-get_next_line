@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/20 20:12:34 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/21 01:27:34 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
-
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (n == 0)
+		return (0);
+	while ((unsigned char)*s1 == (unsigned char)*s2 && *s1 != 0 && n-- > 1)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		s1++;
+		s2++;
 	}
-	return (0)
+	if ((unsigned char)*s1 == (unsigned char)*s2)
+		return (0);
+	else
+		return ((unsigned char)*s1 - (unsigned char)*s2);
 }
-

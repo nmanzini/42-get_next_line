@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/30 14:46:10 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int get_next_line(const int fd, char **line)
+int		main(void)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	int		fd;
+	int		ret;
+	char	**buf;
+	int		counter;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	counter = 0;
+	fd = open("./sample", O_RDONLY);
+	ft_putnbre(fd);
+	if (fd == -1)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		ft_putendl("error opening");
+		return (0);
 	}
-	return (0)
+	while(get_next_line(ft,buff))
+	{
+		ft_putstr(buff)
+	}
+	free(buf);
+	if (close(fd) == -1)
+		return (0);
+	return (0);
 }
-

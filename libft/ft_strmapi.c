@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/16 11:06:17 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/20 23:36:12 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	char			*out;
+	unsigned int	i;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	i = 0;
+	if (f && s)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		out = ft_strnew(ft_strlen(s));
+		if (!out)
+			return (NULL);
+		while (s[i] != 0)
+		{
+			out[i] = f(i, s[i]);
+			i++;
+		}
+		return (out);
 	}
-	return (0)
+	return (NULL);
 }
-

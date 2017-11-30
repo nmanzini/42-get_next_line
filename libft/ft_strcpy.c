@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/13 18:22:22 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/16 10:15:27 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-int get_next_line(const int fd, char **line)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	char *final;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	final = dest;
+	while (*src != 0)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		*dest++ = *src++;
 	}
-	return (0)
+	*dest = 0;
+	return (final);
 }
-

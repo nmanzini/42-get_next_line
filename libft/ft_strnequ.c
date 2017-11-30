@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/16 13:24:32 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/22 17:16:52 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
-
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (s1 && s2)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		while (*s1 == *s2 && n > 0)
+		{
+			if (*s1 == 0)
+			{
+				return (1);
+			}
+			s1++;
+			s2++;
+			n--;
+		}
+		if (n == 0 || (*s1 == 0 && *s2 == 0))
+		{
+			return (1);
+		}
+		return (0);
 	}
-	return (0)
+	return (0);
 }
-

@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/20 15:31:29 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/21 16:07:36 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	size_t total;
+	size_t original;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	original = size;
+	total = ft_strlen(dst) + ft_strlen(src);
+	while (*dst != 0 && size > 0)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		dst++;
+		size--;
 	}
-	return (0)
+	if (size == 0)
+		return (ft_strlen(src) + original);
+	while (*src != 0 && size > 1)
+	{
+		*dst++ = *src++;
+		size--;
+	}
+	*dst = 0;
+	return (total);
+	return (0);
 }
-

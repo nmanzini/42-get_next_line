@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/15 12:57:47 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/15 13:51:27 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+void	ft_putnbr(int n)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
-
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (n < 0)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		ft_putchar('-');
+		if (n == -2147483648)
+		{
+			ft_putchar('2');
+			ft_putnbr(147483648);
+			return ;
+		}
+		n = -n;
 	}
-	return (0)
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+	}
+	ft_putchar(n % 10 + 48);
 }
-

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/20 19:32:08 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/20 22:47:53 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	size_t i;
+	size_t j;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	i = 0;
+	if (*needle == 0)
+		return ((char*)haystack);
+	while (haystack[i] != 0 && i < len)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		j = 0;
+		while (haystack[i + j] == needle[j] && needle[j] != 0 && j + i < len)
+			j++;
+		if (j == ft_strlen(needle))
+			return ((char*)&haystack[i]);
+		i++;
 	}
-	return (0)
+	return (NULL);
 }
-

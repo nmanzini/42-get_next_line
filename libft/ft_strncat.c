@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/14 13:53:21 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/21 01:02:17 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	char *original;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	original = s1;
+	s1 = &s1[ft_strlen(s1)];
+	while (*s2 != 0 && n > 0)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		*s1++ = *s2++;
+		n--;
 	}
-	return (0)
+	*s1 = 0;
+	return (original);
 }
-

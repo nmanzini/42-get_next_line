@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/16 12:02:35 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/22 17:17:13 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-int get_next_line(const int fd, char **line)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
-
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (s1 && s2)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		while (*s1 == *s2)
+		{
+			if (*s1 == 0)
+			{
+				return (1);
+			}
+			s1++;
+			s2++;
+		}
+		return (0);
 	}
-	return (0)
+	return (0);
 }
-

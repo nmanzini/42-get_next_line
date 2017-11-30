@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/20 14:27:19 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/21 01:22:26 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	unsigned char *sone;
+	unsigned char *stwo;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	sone = (unsigned char*)s1;
+	stwo = (unsigned char*)s2;
+	if (n == 0)
+		return (0);
+	while (*sone == *stwo & n-- > 0)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		sone++;
+		stwo++;
+		if (n == 0)
+			return (0);
 	}
-	return (0)
+	if (*sone != *stwo)
+	{
+		return (*sone - *stwo);
+	}
+	return (0);
 }
-

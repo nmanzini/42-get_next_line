@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/16 11:10:31 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/20 23:35:46 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	char *out_m;
+	char *out_o;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (f && s)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		out_o = ft_strnew(ft_strlen(s));
+		if (!out_o)
+			return (NULL);
+		out_m = out_o;
+		while (*s != 0)
+		{
+			*out_m++ = f(*s++);
+		}
+		return (out_o);
 	}
-	return (0)
+	return (NULL);
 }
-

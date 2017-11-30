@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:59:09 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/11/16 13:59:41 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/11/22 17:18:38 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int prev_offset;
-	int curr_position;
-	int *buff;
+	char		*out;
+	char		*str;
+	char const	*src;
 
-	buff = ft_newstr(BUFF_SIZE);
-	prev_offset = lseek(fd, 0, SEEK_CUR);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	if (s)
 	{
-		while (buff[i] != 0 || )
-		curr_position += ret;
-
+		str = ft_strnew(len);
+		out = str;
+		src = &s[start];
+		if (str)
+		{
+			while (*src != 0 && len > 0)
+			{
+				*str++ = *src++;
+				len--;
+			}
+			return (out);
+		}
+		else
+		{
+			return (NULL);
+		}
 	}
-	return (0)
+	else
+		return (NULL);
 }
-
