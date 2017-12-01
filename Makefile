@@ -6,13 +6,14 @@
 #    By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 17:51:18 by nmanzini          #+#    #+#              #
-#    Updated: 2017/11/29 17:54:37 by nmanzini         ###   ########.fr        #
+#    Updated: 2017/11/30 15:32:57 by nmanzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = printNextLine
 
-SRC = main.c
+SRC = 	main.c\
+		get_next_line.c 
 
 OBJ = $(SRC:.c=.o)
 

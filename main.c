@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 14:46:10 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/11/30 21:21:51 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,34 @@
 int		main(void)
 {
 	int		fd;
-	int		ret;
-	char	**buf;
+	char	*str;
+	char	**pointer;
 	int		counter;
 
-	counter = 0;
+	pointer = &str;
+
+	counter = 1;
 	fd = open("./sample", O_RDONLY);
-	ft_putnbre(fd);
 	if (fd == -1)
 	{
 		ft_putendl("error opening");
 		return (0);
 	}
-	while(get_next_line(ft,buff))
+	while(get_next_line(fd,pointer))
 	{
-		ft_putstr(buff)
+		ft_putnbr(counter++);
+		ft_putchar(' ');
+		ft_putnbr(ft_strlen(str));
+		ft_putchar(' ');
+		ft_putendl(str);
 	}
-	free(buf);
+	ft_putnbr(counter++);
+	ft_putchar(' ');
+	ft_putnbr(ft_strlen(str));
+	ft_putchar(' ');
+	ft_putendl(str);
+	
+	free(str);
 	if (close(fd) == -1)
 		return (0);
 	return (0);
