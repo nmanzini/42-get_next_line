@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/05 19:42:47 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/05 20:00:43 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ int		get_next_line(const int fd, char **line)
 		return (0);
 	return (1);
 }
-
-
-// moulitest fails with differend buff sizes, 
-// buff 100000 -> 9 errors
-// buff     50 -> 6 errors
-// buff     20 -> 6 errors
-// buff      5 -> 2 errors
-// buff      2 -> 1 errors
+/*
+** moulitest fails with differend buff sizes, 
+** buff 100000 -> 9 errors
+** buff     50 -> 6 errors
+** buff     20 -> 6 errors
+** buff      5 -> 2 errors**
+** buff      2 -> 1 errors
+*/
