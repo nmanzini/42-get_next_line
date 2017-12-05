@@ -6,117 +6,116 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/11/30 21:30:26 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/05 15:50:06 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strchro(const char *s, int c)
+void	ft_strchr0(char *s, int c)
 {
 	int i;
 
 	i = 0;
-	while (s[i] != 0)
-	{
-		if (s[i] == (char)c)
-			return (i);
-		i++;
-	}
-	return (-1);
+	while (s[i] != (char)c && s[i] != 0)
+		s++;
+	if (s[i] == (char)c)
+		s[i] = 0;
 }
 
-int	ft_write(int fd, int size, char *dst)
+int		str_handler(char *input, char **result, char **rest)
 {
-	int ret;
-	char *buf2;
-	int seen;
+	char		*tmp;
 
-	seen = 0;
-	buf2 = ft_strnew(BUFF_SIZE);
-	while((ret = read(fd, buf2, BUFF_SIZE)))
+	if (ft_strrchr(input, '\n'))
 	{
-		ft_strlcat(dst,buf2,size);
-		if ((seen+= ret) > size)
-			break;
-	}
-	if (ret == 0)
-		return (0);
-	else if (ret > 0)
+		// ft_putendl("\t\tfound new line in input");
+		*rest = ft_strcpy(*rest, &ft_strchr(input, '\n')[1]);
+		ft_strchr0(input, 10);
+		*result = ft_strcat(*result, input);
 		return (1);
-	else
-		return (-1);
+	}
+	// ft_putendl("\t\tnot found new line");
+	// ft_putendl(input);
+	*result = ft_strcat(*result, input);
+	tmp = ft_strnew(ft_strlen(*result) + BUFF_SIZE);
+	tmp = ft_strcpy(tmp, *result);
+	*result = tmp;
+	return (0);
 }
 
-int get_next_line(const int fd, char **line)
+int		rest_handler(char **result, char **rest)
 {
-	int ret;
-	char *buf;
-	int prev_offset;
-	int offset;
-	int verbose = 0;
+	char		*tmp;
 
-	offset = 0;
-	prev_offset = lseek(fd, 0, SEEK_CUR);
+	// ft_putendl("\t\tfound new line in input");
+	tmp = ft_strdup(*rest);
+	*rest = ft_strcpy(*rest, &ft_strchr(*rest, '\n')[1]);
+	ft_strchr0(tmp, 10);
+	*result = ft_strcat(*result, tmp);
+	free(tmp); 
+	return (1);
+}
 
-	if (verbose)
+void		ft_strzero(char *input, int len)
+{
+	while (len--)
 	{
-		ft_putstr("starting offset\t\t\t\t");
-		ft_putnbre(prev_offset);
-		ft_putendl("searching \t\t\t\t\t----");
+		input[len] = 0;
 	}
+}
 
+int		get_next_line(const int fd, char **line)
+{
+	static char *rest;
+	char		*buf;
+	char		*result;
+	int			ret;
+
+	if (fd < 0 || !line)
+		return (-1);
+	if (!rest)
+	{
+		// ft_putendl("\tallocating new REST");
+		result = ft_strnew(BUFF_SIZE);
+		rest = ft_strnew(BUFF_SIZE);
+	}
+	else
+	{
+		result = ft_strnew(BUFF_SIZE + ft_strlen(rest));
+	}
 	buf = ft_strnew(BUFF_SIZE);
-
-
-	while((ret = read(fd, buf, BUFF_SIZE)))
+	if (ft_strrchr(rest, '\n'))
 	{
-		if (ft_strchro(buf, '\n') >= 0)
-		{
-			offset += ft_strchro(buf, '\n');
-			break;
-		}
-		offset += ret;
-	}
-
-	if(verbose)
-	{
-		ft_putstr("ideal offset\t\t\t\t");
-		ft_putnbre(prev_offset + offset);
-	}
-
-	lseek(fd, prev_offset,SEEK_SET);
-
-
-
-	
-	*line = ft_strnew(offset);
-
-	if(verbose)
-	{
-		ft_putstr("writing\t\t\t\t\t\t");
-		ft_putnbre(offset);
-	}
-
-
-	ft_write(fd,offset + 1,*line);
-
-	if (verbose)
-	{
-		ft_putstr("after writing offset\t\t");
-		ft_putnbre(lseek(fd, 0, SEEK_CUR));
-		ft_putstr("repositioned offset\t\t\t");
-	}
-
-	lseek(fd, prev_offset + offset + 1,SEEK_SET);
-	
-	if (verbose)
-		ft_putnbre(lseek(fd, 0, SEEK_CUR));
-
-	if (ret == 0)
-			return (0);
-	else if (ret > 0)
+		// ft_putendl("\t\tfound \\n in  REST");
+		rest_handler(&result, &rest);
+		*line = result;
 		return (1);
+	}
 	else
+	{
+		result = ft_strcat(result, rest);
+		// ft_putendl("\t\tno \\n in  REST");
+		while ((ret = read(fd, buf, BUFF_SIZE)))
+		{
+			ft_putnbre(ret);
+
+			if (ret < 0)
+				return (-1);
+			// ft_putstr("\treading - ");
+			if (str_handler(buf, &result, &rest))
+			{
+				*line = result;
+				return (1);
+			}
+			ft_strzero(buf,BUFF_SIZE);
+		}
+
+	}
+	*line = result;
+	if (buf[0] == 0 )
+		return (0);
+	else if (ret < 0)
 		return (-1);
+	return (1);
 }
