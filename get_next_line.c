@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/05 18:18:42 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/05 19:42:47 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int		str_process(char *input, char **result)
 	{
 		tmp = ft_strdup(*result);
 		// free(result);
-		*result = ft_strnew(ft_strlen(*result) + ft_strlen(input));
+		*result = ft_strnew(ft_strlen(tmp) + ft_strlen(input));
 		*result = ft_strcpy(*result, tmp);
 		*result = ft_strcat(*result, input);
-		ft_strzero(input,BUFF_SIZE);
+		ft_strzero(input, BUFF_SIZE);
 		// free(tmp);
 		return (0);
 	}
@@ -57,13 +57,11 @@ int		str_process(char *input, char **result)
 
 int		get_next_line(const int fd, char **line)
 {
-	static char	*buff;
+	static char	buff[BUFF_SIZE];
 	int			ret;
 
 	if (fd < 0 || !line)
 		return (-1);
-	if (!buff)
-		buff = ft_strnew(BUFF_SIZE);
 	*line = ft_strnew(BUFF_SIZE);
 	if (*buff != 0)
 		if (str_process(buff, line))
@@ -74,8 +72,16 @@ int		get_next_line(const int fd, char **line)
 			return (-1);
 		if (str_process(buff, line))
 			return (1);
-		if (ret < BUFF_SIZE)
-			return (1);
 	}
-	return (0);
+	if (**line == 0)
+		return (0);
+	return (1);
 }
+
+
+// moulitest fails with differend buff sizes, 
+// buff 100000 -> 9 errors
+// buff     50 -> 6 errors
+// buff     20 -> 6 errors
+// buff      5 -> 2 errors
+// buff      2 -> 1 errors

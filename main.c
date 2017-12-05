@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/05 18:06:18 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/05 19:28:06 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,9 @@ int		main(void)
 		ft_putendl("error opening");
 		return (0);
 	}
-	while ((returned = get_next_line(fd, pointer)) && counter < 20)
+	while ((returned = get_next_line(fd, pointer)) && counter < 100)
 	{
-		ft_putnbr(counter++);
-		ft_putchar('\t');
-		ft_putnbr(ft_strlen(str));
-		ft_putchar('\t');
+		counter++;
 		ft_putendl(str);
 	}
 	free(str);
