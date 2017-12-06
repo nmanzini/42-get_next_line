@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/06 20:57:21 by nmanzini         ###   ########.fr       */
+/*   Created: 2017/12/06 21:17:49 by nmanzini          #+#    #+#             */
+/*   Updated: 2017/12/06 21:22:23 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,26 @@ int		str_process(char *input, char **result)
 
 int		get_next_line(const int fd, char **line)
 {
-	static char	buff[BUFF_SIZE + 1];
+	static char	*buff[1024];
 	int			ret;
 
 	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
+	if (!buff[fd])
+		buff[fd] = ft_strnew(BUFF_SIZE);
 	*line = ft_strnew(0);
-	if (*buff)
-		if (str_process(buff, line))
+	if (*buff[fd])
+		if (str_process(buff[fd], line))
 			return (1);
-	ft_strzero(buff, BUFF_SIZE);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	ft_strzero(buff[fd], BUFF_SIZE);
+	while ((ret = read(fd, buff[fd], BUFF_SIZE)))
 	{
 		if (ret < 0)
 			return (-1);
-		if (str_process(buff, line))
+		if (str_process(buff[fd], line))
 			return (1);
 	}
 	if (**line == 0)
-	{
-		ft_strzero(buff, BUFF_SIZE);
 		return (0);
-	}
 	return (1);
 }
