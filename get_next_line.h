@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:57:50 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/05 19:42:00 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/06 20:17:21 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 100000
+# define BUFF_SIZE 7
 
-int get_next_line(const int fd, char **line);
+int		get_next_line(const int fd, char **line);
+int		str_process(char *input, char **result);
+void	ft_strzero(char *input, int len);
+void	ft_strchr0(char *s, int c);
 
 #endif

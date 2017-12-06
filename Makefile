@@ -6,7 +6,7 @@
 #    By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 17:51:18 by nmanzini          #+#    #+#              #
-#    Updated: 2017/11/30 15:32:57 by nmanzini         ###   ########.fr        #
+#    Updated: 2017/12/06 15:21:09 by nmanzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(OBJ): %.o: %.c
 		@gcc -c -Wall -Werror -Wextra -I libft/ $< -o $@
 
 $(LIBFT):
-	@make -C libft
+	@make -C libft 
 
 $(NAME): $(LIBFT) $(OBJ)
 	@gcc $(OBJ) $(LIBFT) -o $(NAME)
