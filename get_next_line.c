@@ -6,11 +6,28 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 22:12:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/05 20:00:43 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/06 15:57:35 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/*
+** moulitest fails with differend buff sizes
+** buff  99999 -> 1 errors	bonus
+** buff   9999 -> 1 errors	bonus
+** buff    999 -> 1 errors	bonus
+** buff     99 -> 1 errors	bonus
+** buff     50 -> 1 errors  bonus
+** buff     36 -> 1 errors  bonus
+** buff     18 -> 1 errors  bonus
+** buff     16 -> 1 errors  bonus
+** buff      8 -> 1 errors  bonus
+** buff      6 -> 2 errors  bonus +	40_hard_test_medium_string.sp [FAIL] F [FAIL] test01 -> strcmp(line, str) == 0
+** buff      5 -> 2 errors  bonus +	40_hard_test_medium_string.sp [FAIL] F [FAIL] test01 -> strcmp(line, str) == 0
+** buff      4 -> 2 errors  bonus +	40_hard_test_medium_string.sp [FAIL] F [FAIL] test01 -> strcmp(line, str) == 0
+** buff		 1 -> 1 errors			42_hard_test_one_big_fat_line [FAIL] T [TIME] test01 -> (null)
+*/
 
 void	ft_strchr0(char *s, int c)
 {
@@ -57,15 +74,18 @@ int		str_process(char *input, char **result)
 
 int		get_next_line(const int fd, char **line)
 {
-	static char	buff[BUFF_SIZE];
+	static char	buff[BUFF_SIZE + 1];
 	int			ret;
 
-	if (fd < 0 || !line)
+	buff[BUFF_SIZE] = 0;
+	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
 	*line = ft_strnew(BUFF_SIZE);
+	ft_strzero(*line,BUFF_SIZE);
 	if (*buff != 0)
 		if (str_process(buff, line))
 			return (1);
+	ft_strzero(buff, BUFF_SIZE);
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 		if (ret < 0)
@@ -77,11 +97,3 @@ int		get_next_line(const int fd, char **line)
 		return (0);
 	return (1);
 }
-/*
-** moulitest fails with differend buff sizes, 
-** buff 100000 -> 9 errors
-** buff     50 -> 6 errors
-** buff     20 -> 6 errors
-** buff      5 -> 2 errors**
-** buff      2 -> 1 errors
-*/
