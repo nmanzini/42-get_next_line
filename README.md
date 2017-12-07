@@ -19,5 +19,8 @@ ending with a newline, read from a file descriptor.
  thise static memory is a pointer to a pointer. on the first level tehre are 1024 slot of memory, as much as the possilbe File descriptors. each of this pointer will point to a string that will have the remainder from the last call to read if the file descriptor has been called.
 
  The function will check if there is a past buffer left every time it is called and add it to the result line. then it will go read the actaull file concatenating what has been red at every loop of read. when encounters a buffer with a new line it concatenate to the result line only the buffer till the new line and the new buffer will be updated to the sub string after the new line.
+ 
+ Here is an image of the function compiled into a main that takes a file and reads every line from it.
+ in this case sample is the first few lines of "Commentarii de Bello Gallico".
 
 ![instruction image](/how_to.png "how to make and run")
