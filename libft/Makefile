@@ -27,6 +27,7 @@ SRC = 	./ft_atoi.c 		\
  		./ft_putendl.c 		\
  		./ft_putendl_fd.c 	\
  		./ft_putnbr.c 		\
+ 		./ft_putnbre.c 		\
  		./ft_putnbr_fd.c 	\
  		./ft_putstr.c 		\
  		./ft_putstr_fd.c 	\
@@ -58,7 +59,7 @@ SRC = 	./ft_atoi.c 		\
  		./ft_strtrim.c 		\
  		./ft_tolower.c 		\
  		./ft_toupper.c 		\
- 		./ft_putnbre.c 		\
+ 		./ft_putnbre.c
 
 OBJS = $(SRC:.c=.o)
 

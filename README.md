@@ -1,28 +1,17 @@
 # Get next line
 
-From a file descriptor _get_next_line(const int fd, char **line)_ will place in a pointer to string _line_ the next line of an input that hasn't been read yet from a certain file descriptor _fd_.
-A new line is defined as the string that is after a \n(ASCII 10) and another \n or a \0(ASCII 0). 
-returns 1 if has red something, 0 if there are no new line, -1 if there is an error (vrowng file descriptor, unexistent original pointer to string.
-
-the function has to work with any length of new line and has to work with a _BUFF_SIZE_ for reading a file from 1 to 9999.
-As bonus this one has to work with multiple file descritors at the same time and use only ona static variable and no global variable.
-
+ From a file descriptor _get_next_line(const int fd, char **line)_ will place in a pointer to string _line_ the next line of an input that hasn't been read yet from a certain file descriptor _fd_.
+ A new line is defined as the string that is after a \n(ASCII 10) and another \n or a \0(ASCII 0). 
+ Returns 1 if has red something, 0 if there are no new line, -1 if there is an error (vrowng file descriptor, unexistent original pointer to string.
+ The function has to work with any length of new line and has to work with a _BUFF_SIZE_ for reading a file from 1 to 9999.
+ As bonus this one has to work with multiple file descritors at the same time and use only ona static variable and no global variable.
+ 
 ## how it works
-
-
-
-
-
-
-
-
-
-1. The program allocates a list of length  = to the max file descriptor (_***file_list_).
-2. every slot of this list is a pointer to a list of strings (_**line_list_).
-3. every string is a list of pointer to the various characthers (_*str_).
+ 1. The program allocates a list of length  = to the max file descriptor (_***file_list_).
+ 2. every slot of this list is a pointer to a list of strings (_**line_list_).
+ 3. every string is a list of pointer to the various characthers (_*str_).
  
- 
-given two  if fd 3 is the english version of the "Commentarii de bello Gallico" and fd 5 is the original one the structure will look like this one
+ given two  if fd 3 is the english version of the "Commentarii de bello Gallico" and fd 5 is the original one the structure will look like this one
 
 - _file_list[0]_ = NULL
 - _file_list[1]_ = NULL
