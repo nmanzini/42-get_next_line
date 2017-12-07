@@ -6,7 +6,7 @@
 #    By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 17:51:18 by nmanzini          #+#    #+#              #
-#    Updated: 2017/12/06 15:21:09 by nmanzini         ###   ########.fr        #
+#    Updated: 2017/12/07 19:39:52 by nmanzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,20 @@ HEADER = -c -I lib_fillit.h
 all: $(NAME)
 
 $(OBJ): %.o: %.c
-		@gcc -c -Wall -Werror -Wextra -I libft/ $< -o $@
+		-@gcc -c -Wall -Werror -Wextra -I libft/ $< -o $@
 
 $(LIBFT):
-	@make -C libft 
+	-@ make -C libft 
 
 $(NAME): $(LIBFT) $(OBJ)
-	@gcc $(OBJ) $(LIBFT) -o $(NAME)
+	-@ gcc $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
-	@make -C libft clean
+	-@ /bin/rm -f $(OBJ)
+	-@ make -C libft clean
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	@make -C libft fclean
+	-@ /bin/rm -f $(NAME)
+	-@ make -C libft fclean
 
-re: fclean all
+re: -@ fclean all

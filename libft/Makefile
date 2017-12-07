@@ -68,14 +68,14 @@ HDRS = libft.h
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror -I $(HDRS) $(SRC) 
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	-@ gcc -c -Wall -Wextra -Werror -I $(HDRS) $(SRC) 
+	-@ ar rc $(NAME) $(OBJS)
+	-@ ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJS)
+	-@ /bin/rm -f $(OBJS)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	-@ /bin/rm -f $(NAME)
 
-re: fclean all
+re: -@ fclean all
