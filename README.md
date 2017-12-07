@@ -7,6 +7,13 @@
  As bonus this one has to work with multiple file descritors at the same time and use only ona static variable and no global variable.
  
 ## how it works
+
+ the function uses only one static variable to remeber what is left from the last call from read.
+ thise static memory is a pointer to a pointer. on the first level tehre are 1024 slot of memory, as much as the possilbe File descriptors. each of this pointer will point to a string that will have the remainder from the last call to read if the file descriptor has been called.
+
+ teh function every time is called will
+
+
  1. The program allocates a list of length  = to the max file descriptor (_***file_list_).
  2. every slot of this list is a pointer to a list of strings (_**line_list_).
  3. every string is a list of pointer to the various characthers (_*str_).

@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/06 20:51:41 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/07 19:27:58 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ int		main(void)
 		ft_putendl("error opening");
 		return (0);
 	}
-	str = ft_strdup("Lorem ipsum dolor sit amet\nLorem ipsum dolor sit amet");
+	str = ft_strdup("Lorem ipsum dolor sit amet");
 	while (get_next_line(fd, &line))
 	{
+		ft_putendl(line);
 		ft_putstr("ft_strlen(line) = ");
 		ft_putnbre(ft_strlen(line));
-		ft_putendl(line);
+		ft_putstr("strcmp(line, str) = ");
+		ft_putnbre(strcmp(line, str));
 	}
-	ft_putstr("strcmp(line, str) = ");
-	ft_putnbre(strcmp(line, str));
 	if (close(fd) == -1)
 		return (0);
 	return (0);
