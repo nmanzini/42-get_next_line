@@ -6,13 +6,13 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/07 19:37:10 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/07 19:43:12 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		main(void)
+int		get_next(char *path)
 {
 	int		fd;
 	char	*line;
@@ -20,7 +20,7 @@ int		main(void)
 	int		i;
 
 	i = 0;
-	fd = open("./sample", O_RDONLY);
+	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putendl("error opening");
@@ -38,4 +38,19 @@ int		main(void)
 	if (close(fd) == -1)
 		return (0);
 	return (0);
+}
+
+
+
+int		main(int argc, char **argv)
+{
+	if (argc < 2)
+		ft_putendl("usage: printNextLine source_file");
+	else if (argc > 2)
+		ft_putendl("usage: printNextLine source_file");
+	else
+	{
+		get_next(argv[1]);
+	}
+	return (1);
 }
