@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 21:17:49 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/06 21:22:23 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/08 14:12:43 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		get_next_line(const int fd, char **line)
 	static char	*buff[1024];
 	int			ret;
 
-	if (fd < 0 || !line || BUFF_SIZE <= 0)
+	if (fd < 0 || fd > 1023 || !line || BUFF_SIZE <= 0)
 		return (-1);
 	if (!buff[fd])
 		buff[fd] = ft_strnew(BUFF_SIZE);
