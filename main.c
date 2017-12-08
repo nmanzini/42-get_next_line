@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/07 19:43:12 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/08 14:21:39 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,27 @@ int		get_next(char *path)
 {
 	int		fd;
 	char	*line;
-	char	*str;
-	int		i;
+	int		result;
 
-	i = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putendl("error opening");
 		return (0);
 	}
-	str = ft_strdup("Lorem ipsum dolor sit amet");
-	while (get_next_line(fd, &line))
+	while ((result = get_next_line(2000, &line)))
 	{
+		if (result == -1)
+		{
+			ft_putendl("error");
+			break ;
+		}
 		ft_putendl(line);
-		// ft_putstr("ft_strlen(line) = ");
-		// ft_putnbre(ft_strlen(line));
-		// ft_putstr("strcmp(line, str) = ");
-		// ft_putnbre(strcmp(line, str));
 	}
 	if (close(fd) == -1)
 		return (0);
 	return (0);
 }
-
-
 
 int		main(int argc, char **argv)
 {

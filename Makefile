@@ -6,7 +6,7 @@
 #    By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 17:51:18 by nmanzini          #+#    #+#              #
-#    Updated: 2017/12/07 19:39:52 by nmanzini         ###   ########.fr        #
+#    Updated: 2017/12/08 14:17:15 by nmanzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,4 +40,4 @@ fclean: clean
 	-@ /bin/rm -f $(NAME)
 	-@ make -C libft fclean
 
-re: -@ fclean all
+re: fclean all
