@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/14 13:43:39 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/14 18:54:08 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		main(int ac, char **av)
 
 	i = 1;
 	if (ac < 2)
-		ft_putendl("usage: printNextLine source_files");
+		ft_putendl("usage: printfile source_files");
 	while (i < ac)
 	{
 		if (get_next(av[i++]))
