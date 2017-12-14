@@ -6,7 +6,7 @@
 /*   By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:11:30 by nmanzini          #+#    #+#             */
-/*   Updated: 2017/12/14 13:35:55 by nmanzini         ###   ########.fr       */
+/*   Updated: 2017/12/14 13:40:23 by nmanzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		get_next(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr("error opening");
+		ft_putstr("error opening: ");
 		ft_putendl(path);
 		return (1);
 	}
@@ -29,7 +29,7 @@ int		get_next(char *path)
 	{
 		if (result == -1)
 		{
-			ft_putstr("error getting next line");
+			ft_putstr("error getting next line in: ");
 			ft_putendl(path);
 			return(1);
 		}
@@ -37,7 +37,7 @@ int		get_next(char *path)
 	}
 	if (close(fd) == -1)
 	{
-		ft_putstr("error closing file");
+		ft_putstr("error closing file: ");
 		ft_putendl(path);
 		return (1);
 	}
