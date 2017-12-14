@@ -6,11 +6,11 @@
 #    By: nmanzini <nmanzini@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 17:51:18 by nmanzini          #+#    #+#              #
-#    Updated: 2017/12/08 14:17:15 by nmanzini         ###   ########.fr        #
+#    Updated: 2017/12/14 13:38:26 by nmanzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printNextLine
+NAME = printfile
 
 SRC = 	main.c\
 		get_next_line.c 
