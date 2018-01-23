@@ -21,7 +21,7 @@ The aim of this project is to make a function that reads a file and at every cal
 
 ## Example
 
- Here is an image of _printfile.c_. it is a function that uses this get_next_line to print out every line from the file paths passed as arguments.
+ Here is an image of _printfile_. it is a function that uses this get_next_line to print out every line from the file paths passed as arguments.
  In this sample I used the first few lines of "Commentarii de Bello Gallico".
 
 ![instruction image](/imgs/how_to.png "how to make and run")
