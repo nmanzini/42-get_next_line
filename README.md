@@ -24,4 +24,4 @@ The aim of this project is to make a function that reads a file and at every cal
  Here is an image of _the main.c_ function compiled that takes file paths as arguments and writes every line from these files.
  In this sample I used the first few lines of "Commentarii de Bello Gallico".
 
-![instruction image](/how_to.png "how to make and run")
+![instruction image](/imgs/how_to.png "how to make and run")
